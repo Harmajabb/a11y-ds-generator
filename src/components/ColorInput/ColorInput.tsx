@@ -1,5 +1,3 @@
-import "./ColorInput.css";
-
 type Props = {
   id: string;
   label: string;
