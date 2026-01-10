@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import "./styles/app.css";
+import "./styles/App.css";
 import "./styles/controls.css";
 import "./styles/layout.css";
 import "./styles/preview.css";
