@@ -157,7 +157,7 @@ npm run check      # TypeScript + Biome
 
 ## Live Demo
 
-🔗 **[Try it live](https://a11y-generator.vercel.app)**
+🔗 **[Try it live](https://a11y-ds-generator-nza9cayss-harmajabbs-projects.vercel.app/)**
 
 ---
 
