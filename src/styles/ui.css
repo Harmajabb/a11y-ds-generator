@@ -1,0 +1,71 @@
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Rows used in preview/export */
+.previewRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.downloadRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--ui-radius-1);
+  border: 1px solid var(--ui-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ui-text);
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ui-accent) 60%, white);
+  outline-offset: 2px;
+}
+
+.btnPrimary {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--ui-accent) 70%, black),
+    var(--ui-accent)
+  );
+  border-color: color-mix(in srgb, var(--ui-accent) 40%, var(--ui-border));
+}
+
+.btnPrimary:hover {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--ui-accent) 78%, black),
+    color-mix(in srgb, var(--ui-accent) 92%, white)
+  );
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}

@@ -1,0 +1,63 @@
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--ui-border);
+  background: color-mix(in srgb, var(--ui-panel) 70%, transparent);
+}
+
+.swatchLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.swatchChip {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: var(--swatch-bg);
+  border: 1px solid color-mix(in srgb, var(--ui-border) 65%, transparent);
+  flex: 0 0 auto;
+}
+
+.swatchMeta {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.swatchTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.swatchLabel {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.swatchValue {
+  color: var(--ui-muted);
+  font-size: 12px;
+}
+
+.swatchDesc {
+  margin: 0;
+  color: var(--ui-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.swatchTextPreview {
+  color: var(--swatch-text);
+  font-weight: 700;
+  opacity: 0.85;
+}

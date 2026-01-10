@@ -1,0 +1,27 @@
+.statusBadge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--ui-border) 85%, transparent);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.statusBadge.isOk {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-ok) 35%, transparent);
+}
+
+.statusBadge.isFail {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-danger) 35%, transparent);
+}
+
+.statusLabel {
+  color: var(--ui-muted);
+  font-size: 12px;
+}
+
+.statusValue {
+  letter-spacing: 0.2px;
+}

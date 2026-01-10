@@ -1,0 +1,15 @@
+.previewButton {
+  background: var(--color-accent);
+  color: var(--color-onAccent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.62rem 1rem;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  cursor: pointer;
+}
+
+.previewButton:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 60%, white);
+  outline-offset: 2px;
+}

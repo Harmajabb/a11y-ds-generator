@@ -1,0 +1,59 @@
+.previewGrid {
+  display: grid;
+  grid-template-columns: minmax(340px, 560px) 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.previewSide {
+  display: grid;
+  gap: 12px;
+}
+
+.previewAside {
+  border: 1px dashed color-mix(in srgb, var(--ui-border) 70%, transparent);
+  border-radius: var(--ui-radius-2);
+  background: rgba(0, 0, 0, 0.12);
+  padding: 14px;
+  min-height: 260px;
+  margin-top: 16px;
+}
+
+.previewCard {
+  margin-top: 10px;
+}
+
+.codeSide {
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-2);
+  background: rgba(0, 0, 0, 0.18);
+  overflow: auto;
+  max-height: 320px;
+}
+
+.codePre {
+  margin: 0;
+  padding: 14px;
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: pre;
+}
+
+.exportStatus {
+  color: var(--ui-muted);
+  font-size: 12px;
+}
+
+@media (max-width: 940px) {
+  .previewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .previewAside {
+    min-height: auto;
+  }
+
+  .codeSide {
+    max-height: 260px;
+  }
+}

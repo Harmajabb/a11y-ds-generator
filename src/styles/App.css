@@ -1,0 +1,80 @@
+.page {
+  min-height: 100vh;
+  padding: 28px 18px 40px;
+  transition:
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.shell {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.header {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--ui-accent), var(--ui-accent-2));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ui-accent) 15%, transparent);
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--ui-muted);
+  line-height: 1.5;
+  max-width: 72ch;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.card {
+  border: 1px solid var(--ui-border);
+  background: var(--ui-panel);
+  border-radius: var(--ui-radius-2);
+  box-shadow: var(--ui-shadow);
+  padding: 16px;
+}
+
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.span-4 {
+  grid-column: span 4;
+}
+.span-6 {
+  grid-column: span 6;
+}
+.span-8 {
+  grid-column: span 8;
+}
+.span-12 {
+  grid-column: span 12;
+}
+
+@media (max-width: 940px) {
+  .span-4,
+  .span-6,
+  .span-8 {
+    grid-column: span 12;
+  }
+}

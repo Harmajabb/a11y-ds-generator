@@ -1,0 +1,19 @@
+.presetRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0 16px;
+}
+
+@media (max-width: 940px) {
+  .presetRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hintInline {
+  margin: 4px 0 8px;
+  color: var(--ui-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
