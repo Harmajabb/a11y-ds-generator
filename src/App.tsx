@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import "C:\Users\Natho\Documents\TeamRockett\04-Solo Rush\08-a11y-ds-generator\src\styles\App.css";
 import "./styles/App.css";
 import "./styles/controls.css";
 import "./styles/layout.css";
