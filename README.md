@@ -1,10 +1,21 @@
 # A11Y Design System Generator - React + TypeScript
 
+[![Tests](https://img.shields.io/badge/tests-12%20passing-brightgreen?style=flat-square&logo=vitest)](https://github.com/ton-username/08-a11y-ds-generator)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![WCAG](https://img.shields.io/badge/WCAG-2.2%20AA-success?style=flat-square)](https://www.w3.org/WAI/WCAG22/quickref/)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
+[![Live Demo](https://img.shields.io/badge/demo-live-blueviolet?style=flat-square&logo=vercel)](https://a11y-ds-generator.vercel.app)
+
 **Author:** Léa François  
 **Project:** A11Y Generator - Accessibility-First Design System Tool  
 **Tech Stack:** React + TypeScript + Vite + Vitest + culori
 
 ![A11Y Generator Preview](./docs/preview.png)
+
+## Live Demo
+
+🔗 **[Try it live](https://a11y-ds-generator.vercel.app/)**
 
 ---
 
@@ -155,11 +166,6 @@ npm run check      # TypeScript + Biome
 
 ---
 
-## Live Demo
-
-🔗 **[Try it live](https://a11y-ds-generator-nza9cayss-harmajabbs-projects.vercel.app/)**
-
----
 
 ## Screenshots
 
