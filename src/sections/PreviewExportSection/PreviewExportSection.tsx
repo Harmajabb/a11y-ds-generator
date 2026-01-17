@@ -1,7 +1,7 @@
+import { useTranslation } from "react-i18next";
 import { PreviewButton } from "../../components/PreviewButton/PreviewButton";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";
 import { PreviewInput } from "../../components/PreviewInput/PreviewInput";
-import { uiTexts } from "../../content/ui-texts";
 import { cssVarsFromString } from "../../core/css-var";
 import "./PreviewExportSection.css";
 
@@ -13,18 +13,20 @@ type Props = {
 };
 
 export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: Props) {
+  const { t } = useTranslation();
+
   return (
-    <section className="card span-12" aria-labelledby="preview-title">
-      <h2 id="preview-title">{uiTexts.preview.title}</h2>
-      <p className="hint">{uiTexts.preview.intro}</p>
+    <section className="card" aria-labelledby="preview-title">
+      <h2 id="preview-title">{t("preview.title")}</h2>
+      <p className="hint">{t("preview.intro")}</p>
 
       <div className="previewGrid">
         <div className="previewSide" style={cssVarsFromString(css)}>
           <div className="previewRow">
-            <PreviewButton>{uiTexts.preview.buttonLabel}</PreviewButton>
+            <PreviewButton>{t("preview.buttonLabel")}</PreviewButton>
             <PreviewInput
-              placeholder={uiTexts.preview.inputPlaceholder}
-              aria-label="Champ accessible"
+              placeholder={t("preview.inputPlaceholder")}
+              aria-label={t("preview.inputPlaceholder")}
             />
           </div>
 
@@ -40,7 +42,7 @@ export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: P
               disabled={!canDownload}
               aria-disabled={!canDownload}
             >
-              {uiTexts.preview.download}
+              {t("preview.download")}
             </button>
 
             <button
@@ -52,23 +54,17 @@ export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: P
               }}
               disabled={!canDownload}
               aria-disabled={!canDownload}
-              aria-label={
-                canDownload ? uiTexts.preview.copy : "Copie désactivée: contraste WCAG AA requis"
-              }
-              title={
-                canDownload ? uiTexts.preview.copy : "Copie désactivée: contraste WCAG AA requis"
-              }
+              aria-label={canDownload ? t("preview.copy") : t("preview.copyDisabled")}
+              title={canDownload ? t("preview.copy") : t("preview.copyDisabled")}
             >
-              {uiTexts.preview.copy}
+              {t("preview.copy")}
             </button>
 
             <span className="exportStatus">
-              {canDownload ? uiTexts.preview.exportReady : uiTexts.preview.exportBlocked}
+              {canDownload ? t("preview.exportReady") : t("preview.exportBlocked")}
             </span>
           </div>
         </div>
-
-        <aside className="previewAside" aria-label="Espace réservé"></aside>
       </div>
     </section>
   );

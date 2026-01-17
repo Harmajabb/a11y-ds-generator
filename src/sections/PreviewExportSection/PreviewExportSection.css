@@ -10,15 +10,6 @@
   gap: 12px;
 }
 
-.previewAside {
-  border: 1px dashed color-mix(in srgb, var(--ui-border) 70%, transparent);
-  border-radius: var(--ui-radius-2);
-  background: rgba(0, 0, 0, 0.12);
-  padding: 14px;
-  min-height: 260px;
-  margin: 16px 0 0;
-}
-
 .previewCard {
   margin-top: 10px;
 }

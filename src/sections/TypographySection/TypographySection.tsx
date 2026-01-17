@@ -1,7 +1,5 @@
+import { useTranslation } from "react-i18next";
 import "./TypographySection.css";
-import { StatusBadge } from "../../components/StatusBadge/StatusBadge";
-import { uiTexts } from "../../content/ui-texts";
-import type { Checks } from "../../core/types";
 
 type Props = {
   values: {
@@ -24,30 +22,31 @@ type Props = {
     setRMd: (v: number) => void;
     setRLg: (v: number) => void;
   };
-  checks: Checks;
 };
 
-export function TypographySection({ values, setters, checks }: Props) {
+export function TypographySection({ values, setters }: Props) {
+  const { t } = useTranslation();
+
   return (
-    <section className="card span-6" aria-labelledby="typo-title">
-      <h2 id="typo-title">{uiTexts.typography.title}</h2>
+    <section className="card" aria-labelledby="typo-title">
+      <h2 id="typo-title">{t("typography.title")}</h2>
       <p className="hint">
-        {uiTexts.typography.intro}
+        {t("typography.intro")}
         <br />
-        {uiTexts.typography.clampHelp}
+        {t("typography.clampHelp")}
       </p>
 
       <div className="controls">
         <div className="field">
           <div className="labelRow">
-            <label htmlFor="bFs">Base font size (clamp)</label>
+            <label htmlFor="bFs">{t("typography.baseFontSize")}</label>
             <span>
               {values.minPx}px → {values.preferredPx}px → {values.maxPx}px / {values.fluidVw}vw
             </span>
           </div>
-          <p className="hintInline">{uiTexts.typography.minLimit}</p>
+          <p className="hintInline">{t("typography.minLimit")}</p>
 
-          <div className="row" style={{ gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <div className="typography-row">
             <input
               id="bFs"
               className="numberInput"
@@ -56,7 +55,7 @@ export function TypographySection({ values, setters, checks }: Props) {
               max={20}
               value={values.minPx}
               onChange={(e) => setters.setMinPx(Number(e.target.value))}
-              aria-label="Taille min (px)"
+              aria-label={t("typography.ariaLabels.minSize")}
             />
             <input
               className="numberInput"
@@ -65,11 +64,11 @@ export function TypographySection({ values, setters, checks }: Props) {
               max={22}
               value={values.preferredPx}
               onChange={(e) => setters.setPreferredPx(Number(e.target.value))}
-              aria-label="Taille préférée (px)"
+              aria-label={t("typography.ariaLabels.preferredSize")}
             />
           </div>
 
-          <div className="row" style={{ gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <div className="typography-row">
             <input
               className="numberInput"
               type="number"
@@ -77,7 +76,7 @@ export function TypographySection({ values, setters, checks }: Props) {
               max={28}
               value={values.maxPx}
               onChange={(e) => setters.setMaxPx(Number(e.target.value))}
-              aria-label="Taille max (px)"
+              aria-label={t("typography.ariaLabels.maxSize")}
             />
             <input
               className="numberInput"
@@ -87,14 +86,14 @@ export function TypographySection({ values, setters, checks }: Props) {
               max={1.2}
               value={values.fluidVw}
               onChange={(e) => setters.setFluidVw(Number(e.target.value))}
-              aria-label="Facteur vw"
+              aria-label={t("typography.ariaLabels.fluidFactor")}
             />
           </div>
         </div>
 
         <div className="field">
           <div className="labelRow">
-            <label htmlFor="lineHeight">Interligne</label>
+            <label htmlFor="lineHeight">{t("typography.lineHeight")}</label>
             <span>{values.lineHeight}</span>
           </div>
 
@@ -107,19 +106,20 @@ export function TypographySection({ values, setters, checks }: Props) {
             max={2}
             value={values.lineHeight}
             onChange={(e) => setters.setLineHeight(Number(e.target.value))}
+            aria-label={t("typography.ariaLabels.lineHeight")}
           />
         </div>
 
         <div className="field">
           <div className="labelRow">
-            <label htmlFor="rSm">Rayons sm / md / lg</label>
+            <label htmlFor="rSm">{t("typography.radiusTitle")}</label>
             <span>
               {values.rSm}px • {values.rMd}px • {values.rLg}px
             </span>
           </div>
-          <p className="hintInline">{uiTexts.typography.radiusHelp}</p>
+          <p className="hintInline">{t("typography.radiusHelp")}</p>
 
-          <div className="row" style={{ gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <div className="typography-row">
             <input
               id="rSm"
               className="numberInput"
@@ -128,7 +128,7 @@ export function TypographySection({ values, setters, checks }: Props) {
               max={30}
               value={values.rSm}
               onChange={(e) => setters.setRSm(Number(e.target.value))}
-              aria-label="Radius sm"
+              aria-label={t("typography.ariaLabels.radiusSm")}
             />
             <input
               className="numberInput"
@@ -137,7 +137,7 @@ export function TypographySection({ values, setters, checks }: Props) {
               max={30}
               value={values.rMd}
               onChange={(e) => setters.setRMd(Number(e.target.value))}
-              aria-label="Radius md"
+              aria-label={t("typography.ariaLabels.radiusMd")}
             />
           </div>
 
@@ -148,37 +148,9 @@ export function TypographySection({ values, setters, checks }: Props) {
             max={30}
             value={values.rLg}
             onChange={(e) => setters.setRLg(Number(e.target.value))}
-            aria-label="Radius lg"
+            aria-label={t("typography.ariaLabels.radiusLg")}
           />
         </div>
-      </div>
-
-      <hr className="divider" />
-
-      <h3 className="cardSubTitle">{uiTexts.typography.wcagTitle}</h3>
-      <p className="hint">{uiTexts.typography.wcagIntro}</p>
-
-      <div className="stack">
-        <StatusBadge
-          label="Texte sur background"
-          value={checks.textOnBg.ratio ? checks.textOnBg.ratio.toFixed(2) : "-"}
-          ok={checks.textOnBg.pass}
-        />
-        <StatusBadge
-          label="Texte secondaire sur card"
-          value={
-            checks.textSecondaryOnCard.ratio ? checks.textSecondaryOnCard.ratio.toFixed(2) : "-"
-          }
-          ok={checks.textSecondaryOnCard.pass}
-        />
-        <StatusBadge
-          label="onAccent sur accent"
-          value={checks.onAccent.ratio ? checks.onAccent.ratio.toFixed(2) : "-"}
-          ok={checks.onAccent.pass}
-        />
-        <p className="hint" style={{ marginTop: 2 }}>
-          {uiTexts.typography.aaRule}
-        </p>
       </div>
     </section>
   );

@@ -7,14 +7,14 @@
 }
 
 .shell {
-  max-width: 1040px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .header {
   display: grid;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .dot {
@@ -40,8 +40,22 @@ h1 {
 
 .grid {
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  grid-template-columns: 1fr 400px;
+  align-items: start;
+}
+
+.grid-left {
+  display: grid;
+  gap: 16px;
+}
+
+.grid-right {
+  position: sticky;
+  top: 20px;
+  display: grid;
+  gap: 16px;
+  max-height: calc(100vh - 40px);
 }
 
 .card {
@@ -58,23 +72,14 @@ h1 {
   letter-spacing: 0.2px;
 }
 
-.span-4 {
-  grid-column: span 4;
-}
-.span-6 {
-  grid-column: span 6;
-}
-.span-8 {
-  grid-column: span 8;
-}
-.span-12 {
-  grid-column: span 12;
-}
-
 @media (max-width: 940px) {
-  .span-4,
-  .span-6,
-  .span-8 {
-    grid-column: span 12;
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-right {
+    position: relative;
+    top: auto;
+    max-height: none;
   }
 }

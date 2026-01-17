@@ -4,3 +4,9 @@
   font-size: 12px;
   line-height: 1.35;
 }
+
+.typography-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}

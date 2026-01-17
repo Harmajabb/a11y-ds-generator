@@ -1,0 +1,75 @@
+{
+  "header": {
+    "title": "Design System Generator (A11Y-first)",
+    "subtitle": {
+      "line1": "This tool generates an accessible design system from a few simple settings (colors, typography and radius).",
+      "line2": "Contrasts are automatically checked according to WCAG 2.2 level AA criteria.",
+      "line3": "As long as accessibility is not respected, export is intentionally blocked."
+    }
+  },
+  "colors": {
+    "title": "Colors",
+    "intro": "Define the main colors of your interface. Secondary colors (onAccent, hover, border) are automatically calculated to ensure sufficient contrast. Changes are applied in real time: favor progressive adjustments.",
+    "presetsTitle": "Presets",
+    "applyDefault": "Apply default",
+    "applyHighContrast": "High contrast",
+    "derivedTitle": "Derived colors",
+    "accent": "Main action color (buttons, links, interactive elements).",
+    "bg": "Global background color. It strongly influences text readability.",
+    "card": "Background color for content blocks (cards, panels). Useful for creating visual hierarchy.",
+    "text": "Main text color. Must always maintain sufficient contrast with the background.",
+    "textSecondary": "Secondary text (hints, metadata). Contrast automatically checked against Card color.",
+    "onAccent": "Auto-chosen (black/white) to maximize contrast on Accent.",
+    "accentHover": "Generated from Accent via color-mix().",
+    "border": "Generated from text color for subtle separators."
+  },
+  "typography": {
+    "title": "Typography & Radius",
+    "intro": "Typography uses fluid sizes (clamp) to adapt to different screen sizes. Values are entered in px (understandable), then converted to rem in CSS (better for zoom and user preferences).",
+    "clampHelp": "We set a minimum size, an 'ideal' size that varies with screen width, and a maximum size: this avoids writing media queries just for typography.",
+    "baseFontSize": "Base font size (clamp)",
+    "minLimit": "For accessibility, the minimum size is limited to 12px: below that, text quickly becomes difficult to read (low vision, pixel density, browser zoom).",
+    "lineHeight": "Line height",
+    "radiusTitle": "Radius sm / md / lg",
+    "radiusHelp": "Radii define component rounding: sm (small elements), md (buttons/cards), lg (modals/panels). Consistent radii improve visual hierarchy.",
+    "wcagTitle": "WCAG Checks",
+    "wcagIntro": "These checks ensure compliance with AA level for normal text (4.5:1 threshold). Visual comfort then depends on context and end users.",
+    "textOnBg": "Text on background",
+    "textSecondaryOnCard": "Text secondary on card",
+    "onAccent": "onAccent on accent",
+    "aaRule": "AA = 4.5:1 for normal text.",
+    "ariaLabels": {
+      "minSize": "Minimum size in pixels",
+      "preferredSize": "Preferred size in pixels",
+      "maxSize": "Maximum size in pixels",
+      "fluidFactor": "Viewport fluid factor",
+      "lineHeight": "Line height",
+      "radiusSm": "Small radius in pixels",
+      "radiusMd": "Medium radius in pixels",
+      "radiusLg": "Large radius in pixels"
+    }
+  },
+  "preview": {
+    "title": "Preview & Export",
+    "intro": "Preview of components generated from tokens. Once all accessibility rules are validated, export becomes available.",
+    "buttonLabel": "Accent Button",
+    "inputPlaceholder": "Accessible field",
+    "download": "Download ZIP",
+    "copy": "Copy theme.css",
+    "copyDisabled": "Copy disabled: WCAG AA contrast required",
+    "exportReady": "Export ready ✅",
+    "exportBlocked": ""
+  },
+  "footer": {
+    "title": "Is this project useful to you?",
+    "subtitle": "Support development by leaving a star on GitHub",
+    "starButton": "⭐ Star on GitHub",
+    "credits": "Made with love and hate by",
+    "author": "Léa François"
+  },
+  "language": {
+    "label": "Change language",
+    "currentLang": "English",
+    "switch": "Switch to French"
+  }
+}
