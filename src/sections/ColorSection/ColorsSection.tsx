@@ -1,6 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { ColorInput } from "../../components/ColorInput/ColorInput";
 import { ColorSwatch } from "../../components/ColorSwatch/ColorSwatch";
-import { uiTexts } from "../../content/ui-texts";
 import type { Tokens } from "../../core/types";
 import "./ColorsSection.css";
 
@@ -30,6 +30,8 @@ type Props = {
 };
 
 export function ColorsSection({ tokens, values, setters, presets }: Props) {
+  const { t } = useTranslation();
+
   const applyPreset = (name: string) => {
     const p = presets[name];
     if (!p) return;
@@ -41,19 +43,19 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
   };
 
   return (
-    <section className="card span-6" aria-labelledby="colors-title">
+    <section className="card" aria-labelledby="colors-title">
       <div className="cardHeaderRow">
-        <h2 id="colors-title">{uiTexts.colors.title}</h2>
+        <h2 id="colors-title">{t("colors.title")}</h2>
       </div>
 
-      <p className="hint">{uiTexts.colors.intro}</p>
+      <p className="hint">{t("colors.intro")}</p>
 
-      <section className="presetRow" aria-label={uiTexts.colors.presetsTitle}>
+      <section className="presetRow" aria-label={t("colors.presetsTitle")}>
         <button className="btn" type="button" onClick={() => applyPreset("Default")}>
-          Appliquer par défaut
+          {t("colors.applyDefault")}
         </button>
         <button className="btn" type="button" onClick={() => applyPreset("High contrast dark")}>
-          Contraste élevé
+          {t("colors.applyHighContrast")}
         </button>
       </section>
 
@@ -64,7 +66,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
           value={values.accent}
           onChange={setters.setAccent}
           displayValue={tokens.colors.accent}
-          hint={uiTexts.colors.accent}
+          hint={t("colors.accent")}
         />
 
         <ColorInput
@@ -73,7 +75,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
           value={values.bg}
           onChange={setters.setBg}
           displayValue={tokens.colors.bg}
-          hint={uiTexts.colors.bg}
+          hint={t("colors.bg")}
         />
 
         <ColorInput
@@ -82,7 +84,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
           value={values.bgCard}
           onChange={setters.setBgCard}
           displayValue={tokens.colors.bgCard}
-          hint={uiTexts.colors.card}
+          hint={t("colors.card")}
         />
 
         <ColorInput
@@ -91,7 +93,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
           value={values.text}
           onChange={setters.setText}
           displayValue={tokens.colors.text}
-          hint={uiTexts.colors.text}
+          hint={t("colors.text")}
         />
 
         <ColorInput
@@ -100,28 +102,28 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
           value={values.textSecondary}
           onChange={setters.setTextSecondary}
           displayValue={tokens.colors.textSecondary}
-          hint={uiTexts.colors.textSecondary}
+          hint={t("colors.textSecondary")}
         />
       </div>
 
-      <section className="swatchGroup" aria-labelledby={uiTexts.colors.derivedTitle}>
+      <section className="swatchGroup" aria-labelledby={t("colors.derivedTitle")}>
         <ColorSwatch
           label="onAccent"
           value={tokens.colors.onAccent}
           rightText={tokens.colors.onAccent}
-          description={uiTexts.colors.onAccent}
+          description={t("colors.onAccent")}
         />
         <ColorSwatch
           label="accentHover"
           value="var(--color-accentHover)"
           rightText="CSS dérivé"
-          description={uiTexts.colors.accentHover}
+          description={t("colors.accentHover")}
         />
         <ColorSwatch
           label="border"
           value="var(--color-border)"
           rightText="CSS dérivé"
-          description={uiTexts.colors.border}
+          description={t("colors.border")}
         />
       </section>
     </section>

@@ -9,3 +9,25 @@
   display: grid;
   gap: 12px;
 }
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.header-content {
+  flex: 1;
+}
+
+@media (max-width: 640px) {
+  .header-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lang-switcher {
+    align-self: flex-end;
+  }
+}
