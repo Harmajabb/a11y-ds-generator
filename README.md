@@ -51,6 +51,14 @@ The tool **automatically validates contrast ratios**, generates CSS variables, a
 - **React components** - Accessible Button & Input
 - **README.md** - Usage documentation
 
+### **Internationalization (NEW in v1.1.0)**
+- **Full bilingual support** (French/English)
+- **Automatic browser language detection**
+- **Persistent language preference** (localStorage)
+- **Accessible translations** (aria-labels for screen readers)
+- **Dynamic HTML lang attribute** synchronization
+- **Language switcher** in header
+
 All exported components follow **WCAG 2.2 AA standards** and use CSS variables for consistent styling.
 
 ### Accessibility-First
@@ -70,6 +78,9 @@ All exported components follow **WCAG 2.2 AA standards** and use CSS variables f
 | **TypeScript** | Type safety & strictness |
 | **Vite** | Build tool & dev server |
 | **Vitest** | Unit testing (12 tests) |
+| **react-i18next** | Internationalization (FR/EN) |
+| **i18next** | i18n framework |
+| **i18next-browser-languagedetector** | Browser language detection |
 | **culori** | WCAG contrast calculations |
 | **JSZip** | Package generation |
 | **file-saver** | File download |
@@ -177,6 +188,34 @@ npm run check      # TypeScript + Biome
 
 ### Export Package
 ![Generated package](./docs/screenshot-export.png)
+
+---
+
+## Changelog
+
+### Version 1.1.0 (January 2025)
+
+**Internationalization**
+- Added full bilingual support (French/English)
+- Language switcher component in header
+- Automatic browser language detection
+- Persistent language preference (localStorage)
+- All aria-labels translated for screen readers
+- Dynamic HTML `lang` attribute synchronization
+
+**UI Improvements**
+- Improved layout with sticky sidebar for WCAG checks
+- Better responsive design on small screens
+- Added footer with GitHub link
+
+### Version 1.0.0 (December 2024)
+
+**Initial Release**
+- WCAG 2.2 AA contrast validation
+- Design system generation
+- Export package (JSON, CSS, React, Tailwind)
+- Fluid typography with clamp()
+- 12 unit tests
 
 ---
 
