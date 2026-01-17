@@ -193,7 +193,7 @@ npm run check      # TypeScript + Biome
 
 ## Changelog
 
-### Version 1.1.0 (January 2025)
+### Version 1.1.0 (January 2026)
 
 **Internationalization**
 - Added full bilingual support (French/English)
@@ -208,7 +208,7 @@ npm run check      # TypeScript + Biome
 - Better responsive design on small screens
 - Added footer with GitHub link
 
-### Version 1.0.0 (December 2024)
+### Version 1.0.0 (December 2025)
 
 **Initial Release**
 - WCAG 2.2 AA contrast validation
