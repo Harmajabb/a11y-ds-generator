@@ -1,3 +1,15 @@
+/**
+ * Ce composant affiche un apercu visuel d'une couleur avec :
+ * - Un petit carre colore (le "chip")
+ * - Le nom de la couleur
+ * - Une valeur optionnelle (ex: le code hex)
+ * - Une description optionnelle
+ * - Un apercu "Aa" pour voir le rendu du texte
+ *
+ * CONCEPT CLE : CSS CUSTOM PROPERTIES (Variables CSS)
+ * Ce composant utilise des variables CSS dynamiques definies via l'attribut style.
+ * Le CSS du composant utilise ensuite ces variables avec var(--nom-variable).
+ */
 import "./ColorSwatch.css";
 
 type Props = {

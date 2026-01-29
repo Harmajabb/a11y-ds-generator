@@ -1,3 +1,23 @@
+/**
+ * Ce composant combine deux methodes de saisie de couleur :
+ * 1. Un color picker natif (la roue de couleurs du navigateur)
+ * 2. Un champ texte pour taper directement le code hexadecimal
+ *
+ * Les deux inputs sont synchronises : modifier l'un met a jour l'autre.
+ *
+ * CONCEPT CLE : COMPOSANT REUTILISABLE
+ * Ce composant est utilise 5 fois dans ColorsSection avec des props differentes.
+ * Au lieu de copier-coller le meme code 5 fois, on cree un composant
+ * parametrable via ses props.
+ * 
+ * Props du composant
+ * - id : Identifiant unique pour lier le label a l'input (accessibilite)
+ * - label : Le nom de la couleur affiche (ex: "Accent", "Background")
+ * - value : La valeur actuelle de la couleur (code hex comme "#7c5cff")
+ * - onChange : Fonction appelee quand l'utilisateur modifie la couleur
+ * - displayValue : Valeur normalisee a afficher (peut differer de value)
+ * - hint : Texte d'aide optionnel (le "?" indique que c'est optionnel)
+ */
 type Props = {
   id: string;
   label: string;

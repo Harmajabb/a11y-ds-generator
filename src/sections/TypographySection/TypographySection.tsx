@@ -1,6 +1,18 @@
 import { useTranslation } from "react-i18next";
 import "./TypographySection.css";
 
+/**
+ * Props du composant - definit les donnees attendues
+ *
+ * values : Les valeurs actuelles de la typographie
+ * - minPx/preferredPx/maxPx : Tailles pour clamp() (en pixels)
+ * - fluidVw : Facteur de fluidite (en viewport width)
+ * - lineHeight : Hauteur de ligne (ratio, ex: 1.5 = 150%)
+ * - rSm/rMd/rLg : Border-radius small/medium/large (en pixels)
+ *
+ * setters : Fonctions pour modifier chaque valeur
+ * Chaque setter prend un number et met a jour l'etat correspondant dans App.tsx
+ */
 type Props = {
   values: {
     minPx: number;
@@ -47,6 +59,14 @@ export function TypographySection({ values, setters }: Props) {
           <p className="hintInline">{t("typography.minLimit")}</p>
 
           <div className="typography-row">
+            {/*
+              INPUT CONTROLE (Controlled Input)
+              - value={values.minPx} : L'input affiche toujours la valeur du state
+              - onChange : Quand l'utilisateur tape, on met a jour le state
+              - Number(e.target.value) : Convertit la string en number
+
+              C'est React qui "controle" la valeur de l'input, pas le DOM
+            */}
             <input
               id="bFs"
               className="numberInput"
@@ -78,6 +98,10 @@ export function TypographySection({ values, setters }: Props) {
               onChange={(e) => setters.setMaxPx(Number(e.target.value))}
               aria-label={t("typography.ariaLabels.maxSize")}
             />
+            {/*
+              step={0.05} permet des increments de 0.05 (ex: 0.15, 0.20, 0.25)
+              Utile pour les valeurs decimales precises
+            */}
             <input
               className="numberInput"
               type="number"
