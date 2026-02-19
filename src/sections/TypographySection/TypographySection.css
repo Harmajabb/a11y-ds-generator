@@ -10,3 +10,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
+
+.inputWithLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputWithLabel label {
+  font-size: 12px;
+  color: var(--ui-muted);
+}

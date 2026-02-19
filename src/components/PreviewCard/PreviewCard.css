@@ -54,14 +54,27 @@
   border-color: var(--color-accentHover);
 }
 
-.previewCardLink {
+.previewCardBtn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.previewCardSecondary {
   color: var(--color-accent);
   text-decoration: none;
   font-size: 14px;
   background: none;
   border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-md);
 }
 
-.previewCardLink:hover {
+.previewCardSecondary:hover {
   text-decoration: underline;
+}
+
+.previewCardSecondary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ColorInput } from "../../components/ColorInput/ColorInput";
 import { ColorSwatch } from "../../components/ColorSwatch/ColorSwatch";
@@ -21,7 +22,6 @@ type ColorSetters = {
 };
 
 type Presets = Record<string, ColorValues>;
-
 type Props = {
   tokens: Tokens;
   values: ColorValues;
@@ -31,15 +31,21 @@ type Props = {
 
 export function ColorsSection({ tokens, values, setters, presets }: Props) {
   const { t } = useTranslation();
+  const [announcement, setAnnouncement] = useState("");
 
   const applyPreset = (name: string) => {
     const p = presets[name];
+    // Guard clause: si le preset n'existe pas, on sort de la fonction
     if (!p) return;
+    // Applique chaque couleur du preset
     setters.setAccent(p.accent);
     setters.setBg(p.bg);
     setters.setBgCard(p.bgCard);
     setters.setText(p.text);
     setters.setTextSecondary(p.textSecondary);
+
+    if (name === "Default") setAnnouncement(t("colors.announcedDefault"));
+    else if (name === "High contrast dark") setAnnouncement(t("colors.announcedHighContrast"));
   };
 
   return (
@@ -57,12 +63,16 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
         <button className="btn" type="button" onClick={() => applyPreset("High contrast dark")}>
           {t("colors.applyHighContrast")}
         </button>
+        <span className="sr-only" aria-live="polite" aria-atomic="true">
+          {announcement}
+        </span>
       </section>
 
       <div className="controls">
         <ColorInput
           id="accent"
-          label="Accent"
+          label={t("colors.labels.accent")}
+          labelLang="en"
           value={values.accent}
           onChange={setters.setAccent}
           displayValue={tokens.colors.accent}
@@ -71,7 +81,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
 
         <ColorInput
           id="bg"
-          label="Background"
+          label={t("colors.labels.bg")}
           value={values.bg}
           onChange={setters.setBg}
           displayValue={tokens.colors.bg}
@@ -80,7 +90,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
 
         <ColorInput
           id="bgCard"
-          label="Card"
+          label={t("colors.labels.card")}
           value={values.bgCard}
           onChange={setters.setBgCard}
           displayValue={tokens.colors.bgCard}
@@ -89,7 +99,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
 
         <ColorInput
           id="text"
-          label="Text"
+          label={t("colors.labels.text")}
           value={values.text}
           onChange={setters.setText}
           displayValue={tokens.colors.text}
@@ -98,7 +108,7 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
 
         <ColorInput
           id="textSecondary"
-          label="Text secondary"
+          label={t("colors.labels.textSecondary")}
           value={values.textSecondary}
           onChange={setters.setTextSecondary}
           displayValue={tokens.colors.textSecondary}
@@ -116,13 +126,13 @@ export function ColorsSection({ tokens, values, setters, presets }: Props) {
         <ColorSwatch
           label="accentHover"
           value="var(--color-accentHover)"
-          rightText="CSS dérivé"
+          rightText="CSS derive"
           description={t("colors.accentHover")}
         />
         <ColorSwatch
           label="border"
           value="var(--color-border)"
-          rightText="CSS dérivé"
+          rightText="CSS derive"
           description={t("colors.border")}
         />
       </section>

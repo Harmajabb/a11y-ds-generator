@@ -2,6 +2,13 @@ import { useTranslation } from "react-i18next";
 import { StatusBadge } from "../../components/StatusBadge/StatusBadge";
 import type { Checks } from "../../core/types";
 
+/**
+ * Props du composant
+ * checks : Objet contenant les resultats des 3 verifications WCAG
+ * Chaque verification a :
+ * - ratio : Le ratio de contraste calcule (ex: 7.53)
+ * - pass : true si le ratio >= 4.5 (niveau AA)
+ */
 type Props = {
   checks: Checks;
 };
@@ -10,11 +17,12 @@ export function WcagChecksSection({ checks }: Props) {
   const { t } = useTranslation();
 
   return (
-    <section className="card" aria-labelledby="wcag-checks-title">
+    <section className="card" aria-labelledby="wcag-checks-title" aria-live="polite">
       <h2 id="wcag-checks-title">{t("typography.wcagTitle")}</h2>
       <p className="hint">{t("typography.wcagIntro")}</p>
 
       <div className="stack">
+
         <StatusBadge
           label={t("typography.textOnBg")}
           value={checks.textOnBg.ratio ? checks.textOnBg.ratio.toFixed(2) : "-"}

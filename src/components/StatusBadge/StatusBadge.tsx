@@ -7,7 +7,7 @@ export function StatusBadge({ label, value, ok }: Props) {
     <div className={`statusBadge ${ok ? "isOk" : "isFail"}`}>
       <span className="statusLabel">{label}</span>
       <strong className="statusValue">
-        {value} — {ok ? "AA PASS" : "AA FAIL"}
+        {value} — <span lang="en">{ok ? "AA PASS" : "AA FAIL"}</span>
       </strong>
     </div>
   );

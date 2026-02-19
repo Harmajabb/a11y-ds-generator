@@ -1,31 +1,24 @@
+import { useTranslation } from "react-i18next";
 import "./PreviewCard.css";
 
-type Props = {
-  title?: string;
-  description?: string;
-  meta?: string;
-};
+export function PreviewCard() {
+  const { t } = useTranslation();
 
-export function PreviewCard({
-  title = "Carte d'exemple",
-  description = "Un bloc de contenu pour visualiser bgCard, border, radius et textSecondary.",
-  meta = "Texte secondaire",
-}: Props) {
   return (
-    <article className="previewCard" aria-label="Aperçu de carte">
+    <article className="previewCard" aria-label={t("preview.cardAriaLabel")}>
       <header className="previewCardHeader">
-        <h3 className="previewCardTitle">{title}</h3>
-        <span className="previewCardMeta">{meta}</span>
+        <h3 className="previewCardTitle">{t("preview.cardTitle")}</h3>
+        <span className="previewCardMeta">{t("preview.cardMeta")}</span>
       </header>
 
-      <p className="previewCardDesc">{description}</p>
+      <p className="previewCardDesc">{t("preview.cardDescription")}</p>
 
       <div className="previewCardActions">
         <button className="previewCardBtn" type="button">
-          Action
+          {t("preview.cardAction")}
         </button>
-        <button type="button" className="previewCardLink" onClick={(e) => e.preventDefault()}>
-          Lien secondaire
+        <button type="button" className="previewCardSecondary">
+          {t("preview.secondaryButton")}
         </button>
       </div>
     </article>

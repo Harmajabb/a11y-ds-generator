@@ -21,14 +21,14 @@ export default function App() {
   const { t } = useTranslation();
   useDocumentLang();
 
-  // Colors
+  //Etats des couleurs
   const [bg, setBg] = useState("#0a0a12");
   const [bgCard, setBgCard] = useState("#14151b");
   const [text, setText] = useState("#f3f3f7");
   const [textSecondary, setTextSecondary] = useState("#c7c2d6");
   const [accent, setAccent] = useState("#7c5cff");
 
-  // Typography / radius (inputs in px, export in rem)
+  //Etats de la typographie
   const [minPx, setMinPx] = useState(15);
   const [preferredPx, setPreferredPx] = useState(16);
   const [maxPx, setMaxPx] = useState(18);
@@ -39,6 +39,8 @@ export default function App() {
   const [rMd, setRMd] = useState(14);
   const [rLg, setRLg] = useState(18);
 
+  // Permet a l'utilisateur d'appliquer un theme complet en un clic
+  // "as const" garantit que TypeScript traite l'objet comme immuable
   const presets = {
     Default: {
       accent: "#7c5cff",
@@ -57,18 +59,23 @@ export default function App() {
   } as const;
 
   const computed = useMemo((): { tokens: Tokens; css: string; checks: Checks } => {
+    // Normalise les couleurs hexadecimales (s'assure qu'elles sont valides)
     const _bg = normalizeHex(bg) ?? bg;
     const _bgCard = normalizeHex(bgCard) ?? bgCard;
     const _text = normalizeHex(text) ?? text;
     const _textSecondary = normalizeHex(textSecondary) ?? textSecondary;
     const _accent = normalizeHex(accent) ?? accent;
 
+    // Calcule la couleur de texte optimale sur l'accent (noir ou blanc)
     const onAccent = pickOnAccent(_accent);
 
+    // Calcule les ratios de contraste pour verifier l'accessibilite WCAG
+    // Un ratio >= 4.5:1 est requis pour le texte normal (niveau AA)
     const ratioTextOnBg = getContrastRatio(_text, _bg);
     const ratioTextSecondaryOnCard = getContrastRatio(_textSecondary, _bgCard);
     const ratioOnAccent = getContrastRatio(onAccent, _accent);
 
+    // Construit les design tokens a partir des valeurs saisies
     const tokens = buildTokens({
       colors: {
         bg: _bg,
@@ -85,6 +92,7 @@ export default function App() {
       radius: { sm: rSm, md: rMd, lg: rLg },
     });
 
+    // Convertit les tokens en variables CSS
     const css = tokensToCssVariables(tokens);
 
     return {
@@ -100,6 +108,7 @@ export default function App() {
       },
     };
   }, [
+    // Tableau des dependances : useMemo recalcule uniquement si une de ces valeurs change
     bg,
     bgCard,
     text,
@@ -115,6 +124,7 @@ export default function App() {
     rLg,
   ]);
 
+  // Determine si l'export est autorise (toutes les verifications WCAG doivent passer)
   const canDownload =
     computed.checks.textOnBg.pass &&
     computed.checks.textSecondaryOnCard.pass &&
@@ -123,6 +133,9 @@ export default function App() {
   return (
     <div className="page">
       <div className="shell">
+        <a href="#main" className="skip-link">
+          {t("skipLink")}
+        </a>
         <header className="header">
           <div className="header-top">
             <div className="header-content">
@@ -139,7 +152,7 @@ export default function App() {
           </div>
         </header>
 
-        <main className="grid">
+        <main id="main" className="grid">
           <div className="grid-left">
             <ColorsSection
               tokens={computed.tokens}
@@ -169,7 +182,9 @@ export default function App() {
               css={computed.css}
               canDownload={canDownload}
               onDownload={() => downloadZip({ tokens: computed.tokens, css: computed.css })}
-              onCopy={() => navigator.clipboard.writeText(computed.css)}
+              onCopy={async () => {
+                await navigator.clipboard.writeText(computed.css);
+              }}
             />
           </div>
         </main>

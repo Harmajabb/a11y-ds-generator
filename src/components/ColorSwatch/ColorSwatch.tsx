@@ -23,7 +23,7 @@ export function ColorSwatch({ label, value, rightText, description, textColor }:
         <span className="swatchChip" aria-hidden="true" />
         <div className="swatchMeta">
           <div className="swatchTop">
-            <span className="swatchLabel">{label}</span>
+            <span className="swatchLabel" lang="en">{label}</span>
             {rightText ? <span className="swatchValue">{rightText}</span> : null}
           </div>
           {description ? <p className="swatchDesc">{description}</p> : null}
