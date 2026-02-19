@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import "./Footer.css";
+import { Star } from "lucide-react";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -16,6 +17,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="footer-button"
         >
+          <Star size={15} aria-hidden="true" />
           {t("footer.starButton")}
         </a>
         <p className="footer-credits">

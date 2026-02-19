@@ -1,18 +1,6 @@
 import { useTranslation } from "react-i18next";
 import "./TypographySection.css";
 
-/**
- * Props du composant - definit les donnees attendues
- *
- * values : Les valeurs actuelles de la typographie
- * - minPx/preferredPx/maxPx : Tailles pour clamp() (en pixels)
- * - fluidVw : Facteur de fluidite (en viewport width)
- * - lineHeight : Hauteur de ligne (ratio, ex: 1.5 = 150%)
- * - rSm/rMd/rLg : Border-radius small/medium/large (en pixels)
- *
- * setters : Fonctions pour modifier chaque valeur
- * Chaque setter prend un number et met a jour l'etat correspondant dans App.tsx
- */
 type Props = {
   values: {
     minPx: number;
@@ -51,7 +39,7 @@ export function TypographySection({ values, setters }: Props) {
       <div className="controls">
         <div className="field">
           <div className="labelRow">
-            <label htmlFor="bFs">{t("typography.baseFontSize")}</label>
+            <span>{t("typography.baseFontSize")}</span>
             <span>
               {values.minPx}px → {values.preferredPx}px → {values.maxPx}px / {values.fluidVw}vw
             </span>
@@ -59,66 +47,65 @@ export function TypographySection({ values, setters }: Props) {
           <p className="hintInline">{t("typography.minLimit")}</p>
 
           <div className="typography-row">
-            {/*
-              INPUT CONTROLE (Controlled Input)
-              - value={values.minPx} : L'input affiche toujours la valeur du state
-              - onChange : Quand l'utilisateur tape, on met a jour le state
-              - Number(e.target.value) : Convertit la string en number
-
-              C'est React qui "controle" la valeur de l'input, pas le DOM
-            */}
-            <input
-              id="bFs"
-              className="numberInput"
-              type="number"
-              min={12}
-              max={20}
-              value={values.minPx}
-              onChange={(e) => setters.setMinPx(Number(e.target.value))}
-              aria-label={t("typography.ariaLabels.minSize")}
-            />
-            <input
-              className="numberInput"
-              type="number"
-              min={12}
-              max={22}
-              value={values.preferredPx}
-              onChange={(e) => setters.setPreferredPx(Number(e.target.value))}
-              aria-label={t("typography.ariaLabels.preferredSize")}
-            />
+            <div className="inputWithLabel">
+              <label htmlFor="bFs">{t("typography.labels.minSize")}</label>
+              <input
+                id="bFs"
+                className="numberInput"
+                type="number"
+                min={12}
+                max={20}
+                value={values.minPx}
+                onChange={(e) => setters.setMinPx(Number(e.target.value))}
+              />
+            </div>
+            <div className="inputWithLabel">
+              <label htmlFor="preferredFs">{t("typography.labels.preferredSize")}</label>
+              <input
+                id="preferredFs"
+                className="numberInput"
+                type="number"
+                min={12}
+                max={22}
+                value={values.preferredPx}
+                onChange={(e) => setters.setPreferredPx(Number(e.target.value))}
+              />
+            </div>
           </div>
 
           <div className="typography-row">
-            <input
-              className="numberInput"
-              type="number"
-              min={14}
-              max={28}
-              value={values.maxPx}
-              onChange={(e) => setters.setMaxPx(Number(e.target.value))}
-              aria-label={t("typography.ariaLabels.maxSize")}
-            />
-            {/*
-              step={0.05} permet des increments de 0.05 (ex: 0.15, 0.20, 0.25)
-              Utile pour les valeurs decimales precises
-            */}
-            <input
-              className="numberInput"
-              type="number"
-              step={0.05}
-              min={0}
-              max={1.2}
-              value={values.fluidVw}
-              onChange={(e) => setters.setFluidVw(Number(e.target.value))}
-              aria-label={t("typography.ariaLabels.fluidFactor")}
-            />
+            <div className="inputWithLabel">
+              <label htmlFor="maxFs">{t("typography.labels.maxSize")}</label>
+              <input
+                id="maxFs"
+                className="numberInput"
+                type="number"
+                min={14}
+                max={28}
+                value={values.maxPx}
+                onChange={(e) => setters.setMaxPx(Number(e.target.value))}
+              />
+            </div>
+            <div className="inputWithLabel">
+              <label htmlFor="fluidVw">{t("typography.labels.fluidFactor")}</label>
+              <input
+                id="fluidVw"
+                className="numberInput"
+                type="number"
+                step={0.05}
+                min={0}
+                max={1.2}
+                value={values.fluidVw}
+                onChange={(e) => setters.setFluidVw(Number(e.target.value))}
+              />
+            </div>
           </div>
         </div>
 
         <div className="field">
           <div className="labelRow">
             <label htmlFor="lineHeight">{t("typography.lineHeight")}</label>
-            <span>{values.lineHeight}</span>
+            <p>{values.lineHeight}</p>
           </div>
 
           <input
@@ -130,50 +117,57 @@ export function TypographySection({ values, setters }: Props) {
             max={2}
             value={values.lineHeight}
             onChange={(e) => setters.setLineHeight(Number(e.target.value))}
-            aria-label={t("typography.ariaLabels.lineHeight")}
           />
         </div>
 
         <div className="field">
           <div className="labelRow">
-            <label htmlFor="rSm">{t("typography.radiusTitle")}</label>
-            <span>
+            <p>{t("typography.radiusTitle")}</p>
+            <p>
               {values.rSm}px • {values.rMd}px • {values.rLg}px
-            </span>
+            </p>
           </div>
           <p className="hintInline">{t("typography.radiusHelp")}</p>
 
           <div className="typography-row">
-            <input
-              id="rSm"
-              className="numberInput"
-              type="number"
-              min={0}
-              max={30}
-              value={values.rSm}
-              onChange={(e) => setters.setRSm(Number(e.target.value))}
-              aria-label={t("typography.ariaLabels.radiusSm")}
-            />
-            <input
-              className="numberInput"
-              type="number"
-              min={0}
-              max={30}
-              value={values.rMd}
-              onChange={(e) => setters.setRMd(Number(e.target.value))}
-              aria-label={t("typography.ariaLabels.radiusMd")}
-            />
+            <div className="inputWithLabel">
+              <label htmlFor="rSm">{t("typography.labels.radiusSm")}</label>
+              <input
+                id="rSm"
+                className="numberInput"
+                type="number"
+                min={0}
+                max={30}
+                value={values.rSm}
+                onChange={(e) => setters.setRSm(Number(e.target.value))}
+              />
+            </div>
+            <div className="inputWithLabel">
+              <label htmlFor="rMd">{t("typography.labels.radiusMd")}</label>
+              <input
+                id="rMd"
+                className="numberInput"
+                type="number"
+                min={0}
+                max={30}
+                value={values.rMd}
+                onChange={(e) => setters.setRMd(Number(e.target.value))}
+              />
+            </div>
           </div>
 
-          <input
-            className="numberInput"
-            type="number"
-            min={0}
-            max={30}
-            value={values.rLg}
-            onChange={(e) => setters.setRLg(Number(e.target.value))}
-            aria-label={t("typography.ariaLabels.radiusLg")}
-          />
+          <div className="inputWithLabel">
+            <label htmlFor="rLg">{t("typography.labels.radiusLg")}</label>
+            <input
+              id="rLg"
+              className="numberInput"
+              type="number"
+              min={0}
+              max={30}
+              value={values.rLg}
+              onChange={(e) => setters.setRLg(Number(e.target.value))}
+            />
+          </div>
         </div>
       </div>
     </section>

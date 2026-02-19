@@ -10,6 +10,12 @@
   gap: 12px;
 }
 
+.previewInputField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .previewCard {
   margin-top: 10px;
 }

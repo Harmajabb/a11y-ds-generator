@@ -1,4 +1,5 @@
 {
+  "skipLink": "Aller au contenu principal",
   "header": {
     "title": "Design System Generator (A11Y-first)",
     "subtitle": {
@@ -21,7 +22,18 @@
     "textSecondary": "Texte secondaire (aides, métadonnées). Contraste vérifié automatiquement sur la couleur Card.",
     "onAccent": "Auto-choisie (noir/blanc) pour maximiser le contraste sur Accent.",
     "accentHover": "Générée depuis Accent via color-mix().",
-    "border": "Générée depuis la couleur de texte pour des séparateurs subtils."
+    "border": "Générée depuis la couleur de texte pour des séparateurs subtils.",
+    "labels": {
+      "accent": "Accent",
+      "bg": "Arrière-plan",
+      "card": "Carte",
+      "text": "Texte",
+      "textSecondary": "Texte secondaire"
+    },
+    "ariaChooseColor": "Choisir la couleur {{label}}",
+    "ariaColorHex": "Couleur {{label}} (hex)",
+    "announcedDefault": "Couleurs par défaut appliquées",
+    "announcedHighContrast": "Couleurs en contraste élevé appliquées"
   },
   "typography": {
     "title": "Typographie & Rayons",
@@ -38,6 +50,15 @@
     "textSecondaryOnCard": "Texte secondaire sur card",
     "onAccent": "onAccent sur accent",
     "aaRule": "AA = 4.5:1 pour texte normal.",
+    "labels": {
+      "minSize": "Min",
+      "preferredSize": "Idéale",
+      "maxSize": "Max",
+      "fluidFactor": "Fluidité (vw)",
+      "radiusSm": "sm",
+      "radiusMd": "md",
+      "radiusLg": "lg"
+    },
     "ariaLabels": {
       "minSize": "Taille minimale en pixels",
       "preferredSize": "Taille préférée en pixels",
@@ -53,23 +74,34 @@
     "title": "Aperçu & Export",
     "intro": "Aperçu des composants générés à partir des tokens. Une fois toutes les règles d'accessibilité validées, l'export devient disponible.",
     "buttonLabel": "Bouton Accent",
-    "inputPlaceholder": "Champ accessible",
+    "inputLabel": "Champ accessible",
+    "inputPlaceholder": "Saisir du texte…",
+    "secondaryButton": "Bouton secondaire",
+    "cardTitle": "Carte d'exemple",
+    "cardDescription": "Un bloc de contenu pour visualiser bgCard, border, radius et textSecondary.",
+    "cardMeta": "Texte secondaire",
+    "cardAction": "Action",
+    "cardAriaLabel": "Aperçu de carte",
     "download": "Télécharger le ZIP",
     "copy": "Copier theme.css",
     "copyDisabled": "Copie désactivée : contraste WCAG AA requis",
-    "exportReady": "Export prêt ✅",
+    "copySuccess": "Copié !",
+    "copyError": "Échec de la copie",
+    "exportReady": "Export prêt",
     "exportBlocked": ""
   },
   "footer": {
     "title": "Ce projet vous est utile ?",
     "subtitle": "Soutenez le développement en laissant une étoile sur GitHub",
-    "starButton": "⭐ Star sur GitHub",
+    "starButton": "Star sur GitHub",
     "credits": "Créé avec amour et haine par",
     "author": "Léa François"
   },
   "language": {
     "label": "Changer de langue",
     "currentLang": "Français",
-    "switch": "Passer à l'anglais"
+    "switch": "Passer à l'anglais",
+    "announcedEn": "Langue changée en anglais",
+    "announcedFr": "Langue changée en français"
   }
 }

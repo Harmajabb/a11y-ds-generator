@@ -1,4 +1,5 @@
 {
+  "skipLink": "Skip to main content",
   "header": {
     "title": "Design System Generator (A11Y-first)",
     "subtitle": {
@@ -21,7 +22,18 @@
     "textSecondary": "Secondary text (hints, metadata). Contrast automatically checked against Card color.",
     "onAccent": "Auto-chosen (black/white) to maximize contrast on Accent.",
     "accentHover": "Generated from Accent via color-mix().",
-    "border": "Generated from text color for subtle separators."
+    "border": "Generated from text color for subtle separators.",
+    "labels": {
+      "accent": "Accent",
+      "bg": "Background",
+      "card": "Card",
+      "text": "Text",
+      "textSecondary": "Text secondary"
+    },
+    "ariaChooseColor": "Choose color {{label}}",
+    "ariaColorHex": "Color {{label}} (hex)",
+    "announcedDefault": "Default colors applied",
+    "announcedHighContrast": "High contrast colors applied"
   },
   "typography": {
     "title": "Typography & Radius",
@@ -38,6 +50,15 @@
     "textSecondaryOnCard": "Text secondary on card",
     "onAccent": "onAccent on accent",
     "aaRule": "AA = 4.5:1 for normal text.",
+    "labels": {
+      "minSize": "Min",
+      "preferredSize": "Preferred",
+      "maxSize": "Max",
+      "fluidFactor": "Fluid (vw)",
+      "radiusSm": "sm",
+      "radiusMd": "md",
+      "radiusLg": "lg"
+    },
     "ariaLabels": {
       "minSize": "Minimum size in pixels",
       "preferredSize": "Preferred size in pixels",
@@ -53,23 +74,34 @@
     "title": "Preview & Export",
     "intro": "Preview of components generated from tokens. Once all accessibility rules are validated, export becomes available.",
     "buttonLabel": "Accent Button",
-    "inputPlaceholder": "Accessible field",
+    "inputLabel": "Accessible field",
+    "inputPlaceholder": "Enter text…",
+    "secondaryButton": "Secondary button",
+    "cardTitle": "Example card",
+    "cardDescription": "A content block to visualize bgCard, border, radius and textSecondary.",
+    "cardMeta": "Secondary text",
+    "cardAction": "Action",
+    "cardAriaLabel": "Card preview",
     "download": "Download ZIP",
     "copy": "Copy theme.css",
     "copyDisabled": "Copy disabled: WCAG AA contrast required",
-    "exportReady": "Export ready ✅",
+    "copySuccess": "Copied!",
+    "copyError": "Copy failed",
+    "exportReady": "Export ready",
     "exportBlocked": ""
   },
   "footer": {
     "title": "Is this project useful to you?",
     "subtitle": "Support development by leaving a star on GitHub",
-    "starButton": "⭐ Star on GitHub",
+    "starButton": "Star on GitHub",
     "credits": "Made with love and hate by",
     "author": "Léa François"
   },
   "language": {
     "label": "Change language",
     "currentLang": "English",
-    "switch": "Switch to French"
+    "switch": "Switch to French",
+    "announcedEn": "Language changed to English",
+    "announcedFr": "Language changed to French"
   }
 }

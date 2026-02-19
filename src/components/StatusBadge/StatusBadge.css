@@ -10,11 +10,11 @@
 }
 
 .statusBadge.isOk {
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-ok) 35%, transparent);
+  border-color: color-mix(in srgb, var(--ui-ok) 50%, transparent);
 }
 
 .statusBadge.isFail {
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-danger) 35%, transparent);
+  border-color: color-mix(in srgb, var(--ui-danger) 50%, transparent);
 }
 
 .statusLabel {

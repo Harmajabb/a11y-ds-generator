@@ -1,37 +1,33 @@
-/**
- * Cette section permet a l'utilisateur de :
- * - Voir un apercu en temps reel des couleurs choisies
- * - Telecharger le CSS genere (fichier ZIP)
- * - Copier le CSS dans le presse-papiers
- *
- * CONCEPT CLE : APPLICATION DYNAMIQUE DES STYLES
- * Le CSS genere est applique dynamiquement via l'attribut style.
- * Cela permet de voir l'apercu sans recharger la page.
- */
-
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { PreviewButton } from "../../components/PreviewButton/PreviewButton";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";
 import { PreviewInput } from "../../components/PreviewInput/PreviewInput";
 import { cssVarsFromString } from "../../core/css-var";
 import "./PreviewExportSection.css";
+import { BadgeCheck } from "lucide-react";
 
-/**
- * Props du composant
- * - css : Le code CSS genere (string de variables CSS)
- * - canDownload : true si toutes les verifications WCAG passent
- * - onDownload : Fonction appelee au clic sur "Telecharger"
- * - onCopy : Fonction appelee au clic sur "Copier"
- */
 type Props = {
   css: string;
   canDownload: boolean;
   onDownload: () => void;
-  onCopy: () => void;
+  onCopy: () => Promise<void>;
 };
 
 export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: Props) {
   const { t } = useTranslation();
+  const [copyFeedback, setCopyFeedback] = useState<"idle" | "success" | "error">("idle");
+
+  const handleCopy = async () => {
+    if (!canDownload) return;
+    try {
+      await onCopy();
+      setCopyFeedback("success");
+    } catch {
+      setCopyFeedback("error");
+    }
+    setTimeout(() => setCopyFeedback("idle"), 2000);
+  };
 
   return (
     <section className="card" aria-labelledby="preview-title">
@@ -39,25 +35,13 @@ export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: P
       <p className="hint">{t("preview.intro")}</p>
 
       <div className="previewGrid">
-        {/*
-          cssVarsFromString(css) convertit le string CSS en objet de style React
-          Exemple : "--color-bg: #0a0a12;" devient { "--color-bg": "#0a0a12" }
-
-          Ces variables CSS sont ensuite utilisees par les composants enfants
-          via var(--color-bg) dans leur CSS
-        */}
         <div className="previewSide" style={cssVarsFromString(css)}>
           <div className="previewRow">
-            {/*
-              children : Le texte entre les balises devient la prop "children"
-              <PreviewButton>Texte</PreviewButton>
-              Dans PreviewButton, on accede a "Texte" via props.children
-            */}
             <PreviewButton>{t("preview.buttonLabel")}</PreviewButton>
-            <PreviewInput
-              placeholder={t("preview.inputPlaceholder")}
-              aria-label={t("preview.inputPlaceholder")}
-            />
+            <div className="previewInputField">
+              <label htmlFor="previewInput">{t("preview.inputLabel")}</label>
+              <PreviewInput id="previewInput" placeholder={t("preview.inputPlaceholder")} />
+            </div>
           </div>
 
           <div className="previewCard">
@@ -65,13 +49,6 @@ export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: P
           </div>
 
           <div className="downloadRow">
-            {/*
-              disabled={!canDownload}
-              Si canDownload est false, le bouton est desactive (grise, non cliquable)
-
-              aria-disabled pour l'accessibilite : informe les lecteurs d'ecran
-              que le bouton est desactive
-            */}
             <button
               type="button"
               className="btn btnPrimary"
@@ -85,10 +62,7 @@ export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: P
             <button
               className="btn"
               type="button"
-              onClick={() => {
-                if (!canDownload) return;
-                onCopy();
-              }}
+              onClick={handleCopy}
               disabled={!canDownload}
               aria-disabled={!canDownload}
               aria-label={canDownload ? t("preview.copy") : t("preview.copyDisabled")}
@@ -97,8 +71,18 @@ export function PreviewExportSection({ css, canDownload, onDownload, onCopy }: P
               {t("preview.copy")}
             </button>
 
-            <span className="exportStatus">
-              {canDownload ? t("preview.exportReady") : t("preview.exportBlocked")}
+            <span className="exportStatus" aria-live="polite" aria-atomic="true">
+              {copyFeedback === "success" ? (
+                t("preview.copySuccess")
+              ) : copyFeedback === "error" ? (
+                t("preview.copyError")
+              ) : canDownload ? (
+                <>
+                  <BadgeCheck size={15} aria-hidden="true" /> {t("preview.exportReady")}
+                </>
+              ) : (
+                t("preview.exportBlocked")
+              )}
             </span>
           </div>
         </div>
